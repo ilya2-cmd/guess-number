@@ -18,6 +18,13 @@ int main(){
         while (number != rand_number && cnt < MAX_ATTEMPTS){
             cnt++;
             cout << "Your number: "; cin >> number;
+            if (cin.fail()){
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid input! Please enter a number" << endl;
+                cnt--;
+                continue;
+            }
             if (cnt < MAX_ATTEMPTS){
                 if (number < rand_number){
                     cout << "Too low! Try again" << endl;
